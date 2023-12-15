@@ -50,7 +50,7 @@ public class LoginController extends HttpServlet {
 					else if (user.getRole().equalsIgnoreCase("buyer")) {
 						
 						printWriter.print("Login successful");
-						rDispatcher = req.getRequestDispatcher("BuyerHome.html");
+						rDispatcher = req.getRequestDispatcher("BuyerHome.jsp");
 						rDispatcher.forward(req, resp);
 						
 					}

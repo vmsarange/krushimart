@@ -2,6 +2,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="krushimart.UserCrud"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -11,6 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+       
         <%
         
         String email = (String)session.getAttribute("email");
@@ -24,6 +26,8 @@
        pStatement.setString(2, password);
        
        ResultSet rSet = pStatement.executeQuery();
+       
+       
        
        while(rSet.next())
        {
@@ -42,9 +46,6 @@
       
       <% } %>
       <br>
-      <a href="ChangePass.jsp"><button>change password</button></a>    <a href="EditProfile.jsp"><button>Edit Profile</button></a> 
-      <a href="AddPost.html"><button>Add Post</button></a>
-      <a href="DeletePost.jsp"><button>Delete Post</button></a>
-      
+      <a href="ChangePass.jsp"><button>change password</button></a>    <a href="EditProfile.jsp"><button>Edit Profile</button></a>
 </body>
 </html>

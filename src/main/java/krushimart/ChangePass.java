@@ -21,7 +21,7 @@ public class ChangePass  extends HttpServlet{
 		
 		HttpSession session = req.getSession();
 		 String email = (String) session.getAttribute("email");
-		 
+		 String role = (String) session.getAttribute("role");
 		 
 		 PrintWriter printWriter = resp.getWriter();
 		 
@@ -40,10 +40,15 @@ public class ChangePass  extends HttpServlet{
 					 
 					 printWriter.print("<h1>Password Updated</h1>");
 					 
-					 rDispatcher = req.getRequestDispatcher("Login.html");
-					 rDispatcher.include(req, resp);
-					 
-					 
+					if (role.equalsIgnoreCase("farmer")) {
+						 rDispatcher = req.getRequestDispatcher("FarmerProfile.jsp");
+						 rDispatcher.include(req, resp);
+					} else if (role.equalsIgnoreCase("buyer")) 
+						
+					 {
+						 rDispatcher = req.getRequestDispatcher("BuyerProfile.jsp");
+						 rDispatcher.include(req, resp);
+					} 
 					 
 				} else {
 					 printWriter.print("<h1>Something went wrong!</h1>");

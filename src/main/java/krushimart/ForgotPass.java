@@ -48,11 +48,6 @@ public class ForgotPass extends HttpServlet {
 			rDispatcher.include(req, resp);
 		}
 			
-			
-			
-			
-			
-			
 		} catch (Exception e) {
 			
 			e.printStackTrace();

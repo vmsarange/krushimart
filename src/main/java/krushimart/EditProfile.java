@@ -25,7 +25,7 @@ public class EditProfile extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		String email1 = (String)session.getAttribute("email");
-		
+		String role = (String) session.getAttribute("role");
 		User user = new User();
 		
 		user.setFirstname(firstname);
@@ -33,6 +33,7 @@ public class EditProfile extends HttpServlet {
 		user.setAddress(address);
 		user.setEmail(email);
 		user.setPhone(phone);
+		user.setRole(role);
 		
         UserCrud userCrud = new UserCrud();
 		PrintWriter printWriter = resp.getWriter();
@@ -43,14 +44,20 @@ public class EditProfile extends HttpServlet {
 			if (result!=0) {
 				
 				session.setAttribute("email", email);
-				printWriter.print("<h1>Profile Updated Successfully</h1>");
-				rDispatcher = req.getRequestDispatcher("FarmerProfile.jsp");
-				rDispatcher.include(req, resp);
+				if (user.getRole().equalsIgnoreCase("farmer")) {
+					
+					printWriter.print("<h1>Profile Updated Successfully</h1>");
+					rDispatcher = req.getRequestDispatcher("FarmerProfile.jsp");
+					rDispatcher.include(req, resp);
+				} else if (user.getRole().equalsIgnoreCase("buyer")) {
+					printWriter.print("<h1>Profile Updated Successfully</h1>");
+					rDispatcher = req.getRequestDispatcher("BuyerProfile.jsp");
+					rDispatcher.include(req, resp);
+				} 
 			
 			} else {
 				printWriter.print("<h1>Something went wrong</h1>");
-				rDispatcher = req.getRequestDispatcher("FarmerProfile.jsp");
-				rDispatcher.include(req, resp);
+				
 			}
 		} catch (Exception e) {
 			

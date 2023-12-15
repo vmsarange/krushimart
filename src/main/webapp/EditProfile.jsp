@@ -38,7 +38,7 @@
        <label>Phone : <input type="phone" value="<%= rSet.getString("phone") %>"name="phone"></label>
        <br>
        <label>Address :<input type="text" name="address" value="<%= rSet.getString("address") %>"></label>
-     <br> <br> <input type="submit" value="submit">
+     <br> <br> <input type="submit" value="submit"> <a href="FarmerHome.jsp"> <input type="button" value="cancel"></a>
     </form>
   
     <% } %>
